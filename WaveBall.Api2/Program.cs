@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace WaveBall.Api
+namespace WaveBall.Api2
 {
     public class Program
     {
@@ -20,8 +20,7 @@ namespace WaveBall.Api
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder
-                    .UseStartup<Startup>()
+                    webBuilder.UseStartup<Startup>()
                     .UseUrls("http://*:" + Environment.GetEnvironmentVariable("PORT"));
                 });
     }

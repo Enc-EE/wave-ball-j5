@@ -2,13 +2,17 @@
 
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim AS base
 WORKDIR /app
-EXPOSE 80
-EXPOSE 443
+#EXPOSE 80
+#EXPOSE 443
+#EXPOSE 8080
+#EXPOSE $PORT
+#EXPOSE 8443
+#ENV ASPNETCORE_URLS="http://+:$PORT"
+#ENV ASPNETCORE_URLS="https://+:8443;http://+:8080"
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
 COPY ["WaveBall.Api/WaveBall.Api.csproj", "WaveBall.Api/"]
-COPY ["WaveBall.Data/WaveBall.Data.csproj", "WaveBall.Data/"]
 RUN dotnet restore "WaveBall.Api/WaveBall.Api.csproj"
 COPY . .
 WORKDIR "/src/WaveBall.Api"
