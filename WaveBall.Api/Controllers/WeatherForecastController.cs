@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using WaveBall.Data;
 
 namespace WaveBall.Api.Controllers
 {
@@ -26,6 +27,7 @@ namespace WaveBall.Api.Controllers
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
+            var x = new Class1();
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
