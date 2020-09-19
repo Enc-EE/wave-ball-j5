@@ -20,7 +20,9 @@ namespace WaveBall.Api
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>();
+                    webBuilder
+                    .UseStartup<Startup>();
+                    //.UseUrls("http://0.0.0.0:8080", "http://0.0.0.0:8443");
                 });
     }
 }

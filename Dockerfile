@@ -2,8 +2,12 @@
 
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim AS base
 WORKDIR /app
-EXPOSE 80
-EXPOSE 443
+#EXPOSE 80
+#EXPOSE 443
+EXPOSE 8080
+#EXPOSE 8443
+ENV ASPNETCORE_URLS="http://+:8080"
+#ENV ASPNETCORE_URLS="https://+:8443;http://+:8080"
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
