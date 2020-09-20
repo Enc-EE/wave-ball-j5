@@ -24,6 +24,14 @@ namespace WaveBall.Api2
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost:8080");
+                    });
+            });
             services.AddControllers();
         }
 
@@ -36,6 +44,8 @@ namespace WaveBall.Api2
             }
 
             app.UseRouting();
+
+            app.UseCors();
 
             app.UseAuthorization();
 

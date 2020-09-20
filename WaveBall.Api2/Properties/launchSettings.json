@@ -22,7 +22,8 @@
       "launchBrowser": true,
       "launchUrl": "weatherforecast",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "PORT": "5000"
       },
       "applicationUrl": "http://localhost:5000"
     },
@@ -30,7 +31,8 @@
       "commandName": "Docker",
       "launchBrowser": true,
       "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/weatherforecast",
-      "publishAllPorts": true
+      "publishAllPorts": true,
+      "httpPort": 32769
     }
   }
 }
