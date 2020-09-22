@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using WaveBall.Data;
 
 namespace WaveBall.Api2.Controllers
 {
@@ -23,6 +24,14 @@ namespace WaveBall.Api2.Controllers
         public string Get()
         {
             return "I'm fine :)";
+        }
+
+        [HttpGet]
+        [Route("db")]
+        public string GetDb()
+        {
+            using (var dbCtx = new WaveBallContext())
+            return "I'm fine :) and there is something more: " + dbCtx.StartUps.Any();
         }
     }
 }
