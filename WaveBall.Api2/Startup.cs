@@ -29,7 +29,7 @@ namespace WaveBall.Api2
                 options.AddDefaultPolicy(
                     builder =>
                     {
-                        builder.WithOrigins("http://localhost:8080");
+                        builder.WithOrigins("http://localhost:8080", "http://192.168.178.29:8080");
                     });
             });
             services.AddControllers();
