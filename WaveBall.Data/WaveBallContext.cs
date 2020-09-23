@@ -1,20 +1,21 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Text;
 
 namespace WaveBall.Data
 {
     public class WaveBallContext : DbContext
     {
-        public DbSet<StartUp> StartUps { get; set; }
+        public DbSet<LogEntry> LogEntries { get; set; }
+        public DbSet<App> Apps { get; set; }
 
         public WaveBallContext()
         {
-            if (Boolean.TryParse(Environment.GetEnvironmentVariable("ConnectionStringInFile"), out bool setConnectionString) && setConnectionString)
+            if (bool.TryParse(Environment.GetEnvironmentVariable("ConnectionStringInFile"), out bool setConnectionString) && setConnectionString)
             {
-                Environment.SetEnvironmentVariable("ConnectionString", System.IO.File.ReadLines("private.txt").First());
+                Environment.SetEnvironmentVariable("ConnectionString", System.IO.File.ReadLines(@"..\private.txt").First());
             }
         }
 
@@ -24,10 +25,39 @@ namespace WaveBall.Data
         }
     }
 
-    public class StartUp
+    public class LogEntry
     {
-        public long StartUpId { get; set; }
-        public DateTime DateTime { get; set; }
-        public string Info { get; set; }
+        [Key]
+        public long LogEntryId { get; set; }
+        [Required]
+        public long AppId { get; set; }
+        [Required]
+        public string Level { get; set; }
+        [Required]
+        public string Message { get; set; }
+        [Required]
+        public DateTime CreatedAt { get; set; }
+
+        public App App { get; set; }
+    }
+
+    public class App
+    {
+        [Key]
+        public long AppId { get; set; }
+        [Required]
+        public Guid AppGuid { get; set; }
+        [Required]
+        public string Name { get; set; }
+        [Required]
+        public string ModifiedBy { get; set; }
+        [Required]
+        public DateTime ModifiedAt { get; set; }
+        [Required]
+        public string CreatedBy { get; set; }
+        [Required]
+        public DateTime CreatedAt { get; set; }
+
+        public List<LogEntry> LogEntries { get; } = new List<LogEntry>();
     }
 }

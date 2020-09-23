@@ -31,7 +31,7 @@ namespace WaveBall.Api2.Controllers
         public string GetDb()
         {
             using (var dbCtx = new WaveBallContext())
-            return "I'm fine :) and there is something more: " + dbCtx.StartUps.Any();
+            return "I'm fine :) and there is something more: " + dbCtx.Apps.Any();
         }
     }
 }

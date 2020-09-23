@@ -22,7 +22,6 @@
       "launchBrowser": true,
       "launchUrl": "api/v1/health",
       "environmentVariables": {
-        "ConnectionStringInFile": "true",
         "ASPNETCORE_ENVIRONMENT": "Development",
         "PORT": "5000"
       },
