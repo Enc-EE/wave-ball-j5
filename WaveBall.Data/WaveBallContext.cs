@@ -21,7 +21,7 @@ namespace WaveBall.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(Environment.GetEnvironmentVariable("ConnectionString"));
+            optionsBuilder.UseNpgsql(Environment.GetEnvironmentVariable("ConnectionString"));
         }
     }
 

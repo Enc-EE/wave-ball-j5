@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace WaveBall.Data.Migrations
 {
@@ -12,7 +13,7 @@ namespace WaveBall.Data.Migrations
                 columns: table => new
                 {
                     AppId = table.Column<long>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     AppGuid = table.Column<Guid>(nullable: false),
                     Name = table.Column<string>(nullable: false),
                     ModifiedBy = table.Column<string>(nullable: false),
@@ -30,7 +31,7 @@ namespace WaveBall.Data.Migrations
                 columns: table => new
                 {
                     LogEntryId = table.Column<long>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     AppId = table.Column<long>(nullable: false),
                     Level = table.Column<string>(nullable: false),
                     Message = table.Column<string>(nullable: false),
